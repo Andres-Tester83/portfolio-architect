@@ -213,7 +213,7 @@ const projects = [
         challenge: 'Operaciones manuales lentas y propensas a errores.',
         solution: 'Conexión inter-sistemas para detonar automatizaciones complejas y eficientes.',
         tools: ['Make', 'n8n', 'Twilio'],
-        images: ['/images/make-1.png', '/images/make-2.png', '/images/make-3.png', '/images/n8n-3.png', '/images/n8n-4.png', '/images/n8n_2.png', '/images/N8N_workflow.png']
+        images: ['/images/make-1.png', '/images/make-2.png', '/images/make-3.png', '/images/n8n-3.png', '/images/n8n-4.png', '/images/n8n_2.png', '/images/N8N_workflow.png', '/images/n8n-agent.png', '/images/n8n-agent2.png']
     },
     {
         id: 'desarrollo-web',
@@ -233,7 +233,7 @@ const projects = [
         challenge: 'Falta de seguimiento automático a prospectos y chats.',
         solution: 'Flujos conversacionales y gestión de leads centralizada.',
         tools: ['ManyChat', 'Kommo CRM', 'Social Automation'],
-        images: ['/images/kommo-1.png']
+        images: ['/images/kommo-1.png', '/images/mannychat-1.png', '/images/Mannychat-2.png', '/images/mannychat-3.png', '/images/mannychat-4.png']
     }
 ];
 
