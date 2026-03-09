@@ -1,5 +1,6 @@
 import React from 'react';
 import Hero from './components/Hero.jsx';
+import About from './components/About.jsx';
 import TechStack from './components/TechStack.jsx';
 import Showcase from './components/Showcase.jsx';
 import Contact from './components/Contact.jsx';
@@ -12,6 +13,7 @@ function App() {
                     Architect<span style={{ color: 'var(--accent-blue)' }}>.</span>
                 </div>
                 <nav className="flex gap-6" style={{ display: 'flex', gap: '2.5rem' }}>
+                    <a href="#about" className="text-secondary nav-link" style={{ fontSize: '0.9rem', fontWeight: 500, transition: 'color 0.2s' }}>Identidad</a>
                     <a href="#stack" className="text-secondary nav-link" style={{ fontSize: '0.9rem', fontWeight: 500, transition: 'color 0.2s' }}>Stack</a>
                     <a href="#proyectos" className="text-secondary nav-link" style={{ fontSize: '0.9rem', fontWeight: 500, transition: 'color 0.2s' }}>Proyectos</a>
                     <a href="#contacto" className="text-secondary nav-link" style={{ fontSize: '0.9rem', fontWeight: 500, transition: 'color 0.2s' }}>Contacto</a>
@@ -24,6 +26,7 @@ function App() {
 
             <main className="container">
                 <Hero />
+                <About />
                 <TechStack />
                 <Showcase />
                 <Contact />
