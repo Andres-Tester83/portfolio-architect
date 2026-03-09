@@ -1,5 +1,28 @@
 import React from 'react';
-import { User, Code2, Rocket } from 'lucide-react';
+import { User, Code2, Rocket, Workflow, Layout, MessageSquare, LineChart, Target } from 'lucide-react';
+
+const services = [
+    {
+        icon: <Workflow size={24} color="var(--accent-blue)" />,
+        title: "Orquestación & IA",
+        desc: "Sistemas n8n y Make interconectados con LLMs para escalar operaciones."
+    },
+    {
+        icon: <Layout size={24} color="var(--accent-blue)" />,
+        title: "Webs & Vibe Coding",
+        desc: "Desarrollo y diseño web acelerado por IA, garantizando MVP técnicos listos para producción."
+    },
+    {
+        icon: <Target size={24} color="var(--accent-blue)" />,
+        title: "Arquitectura de CRM",
+        desc: "Implementación de Kommo, GHL y Monday para mapear trayectos de ventas sin fricción."
+    },
+    {
+        icon: <MessageSquare size={24} color="var(--accent-blue)" />,
+        title: "Embudos & Chatbots",
+        desc: "Automatización en ManyChat y WhatsApp atada a funnels comprobados."
+    }
+];
 
 const About = () => {
     return (
@@ -54,7 +77,21 @@ const About = () => {
                         </div>
 
                     </div>
+
                 </div>
+            </div>
+
+            {/* Services Section attached to About */}
+            <div style={{ marginTop: '2rem', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem' }}>
+                {services.map((service, index) => (
+                    <div key={index} className="glass-panel" style={{ padding: '2rem', display: 'flex', flexDirection: 'column', gap: '1rem', borderTop: '2px solid transparent', transition: 'all 0.3s' }} onMouseEnter={(e) => { e.currentTarget.style.borderTopColor = 'var(--accent-blue)'; e.currentTarget.style.transform = 'translateY(-5px)'; }} onMouseLeave={(e) => { e.currentTarget.style.borderTopColor = 'transparent'; e.currentTarget.style.transform = 'translateY(0)'; }}>
+                        <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: 'rgba(0, 240, 255, 0.05)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                            {service.icon}
+                        </div>
+                        <h4 className="font-heading font-bold" style={{ fontSize: '1.1rem' }}>{service.title}</h4>
+                        <p className="text-secondary" style={{ fontSize: '0.9rem', lineHeight: 1.6 }}>{service.desc}</p>
+                    </div>
+                ))}
             </div>
         </section>
     );
