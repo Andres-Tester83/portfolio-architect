@@ -39,8 +39,10 @@ const ImageSlider = ({ images, onImageClick }) => {
                         opacity: index === currentIndex ? 1 : 0,
                         transition: 'opacity 0.6s ease-in-out',
                         backgroundImage: `url('${img}')`,
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'top center',
+                        backgroundSize: 'contain',
+                        backgroundPosition: 'center',
+                        backgroundRepeat: 'no-repeat',
+                        backgroundColor: '#0a0a0a',
                     }}
                 />
             ))}
@@ -224,7 +226,10 @@ const projects = [
         images: ['/images/webd-1.png', '/images/webd-2.png', '/images/webd-3.png', '/images/skool-1.png'],
         links: [
             { text: 'Dashboard Analítico (Demo)', url: 'https://dashboard-iota-rust.vercel.app/' },
-            { text: 'Presentación Interactiva', url: 'https://presentacion.axisdesignarts.com/' }
+            { text: 'Presentación Interactiva', url: 'https://presentacion.axisdesignarts.com/' },
+            { text: 'Sorelle Vita Couture', url: 'https://sorellevitacouture.com/' },
+            { text: 'New Version by YSA', url: 'https://www.newversionbyysa.com/' },
+            { text: 'Hispana de Servicios', url: 'https://hispanadeservicios.com/' }
         ]
     },
     {

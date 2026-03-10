@@ -102,7 +102,7 @@ const About = () => {
                                         <img
                                             src={p.src}
                                             alt={p.name}
-                                            style={{ height: '36px', maxWidth: '110px', objectFit: 'contain', filter: 'grayscale(100%) brightness(0.6)', transition: 'filter 0.3s' }}
+                                            style={{ height: '52px', maxWidth: '140px', objectFit: 'contain', filter: 'grayscale(100%) brightness(0.6)', transition: 'filter 0.3s' }}
                                             onMouseEnter={e => e.currentTarget.style.filter = 'grayscale(0%) brightness(1)'}
                                             onMouseLeave={e => e.currentTarget.style.filter = 'grayscale(100%) brightness(0.6)'}
                                         />
