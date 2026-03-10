@@ -246,3 +246,68 @@ button {
     padding: 2rem !important;
   }
 }
+
+/* ── Marquee / Logo Strip ── */
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 22s linear infinite;
+}
+
+.marquee-wrapper:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+.marquee-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3rem;
+  flex-shrink: 0;
+}
+
+/* ── Global Mobile Responsiveness ── */
+@media (max-width: 768px) {
+  .section-padding {
+    padding: 64px 0;
+  }
+
+  .container {
+    padding: 0 18px;
+  }
+
+  /* About card */
+  .about-card {
+    padding: 2rem 1.5rem !important;
+  }
+
+  .about-watermark {
+    display: none;
+  }
+
+  .about-badges {
+    gap: 1rem !important;
+  }
+
+  /* Hero / large headings */
+  .text-gradient,
+  .text-gradient-accent {
+    word-break: break-word;
+  }
+
+  /* Glass panels text overflow guard */
+  .glass-panel {
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* Nav */
+  nav .container {
+    padding: 0 16px;
+  }
+}
