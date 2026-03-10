@@ -42,13 +42,11 @@ function App() {
         `}} />
             </header>
 
-            <main className="container">
-                <Hero />
-                <About />
-                <TechStack />
-                <Showcase />
-                <Contact />
-            </main>
+            <div className="stripe-a"><main className="container"><Hero /></main></div>
+            <div className="stripe-b"><div className="container"><About /></div></div>
+            <div className="stripe-a"><div className="container"><TechStack /></div></div>
+            <div className="stripe-b"><div className="container"><Showcase /></div></div>
+            <div className="stripe-a"><div className="container"><Contact /></div></div>
 
             <footer className="container py-12 text-center text-secondary mt-20" style={{ borderTop: '1px solid rgba(255, 255, 255, 0.05)' }}>
                 <p>© {new Date().getFullYear()} Architect of Growth. Todos los derechos reservados.</p>
