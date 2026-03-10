@@ -212,3 +212,37 @@ button {
 .slider-container:hover .slider-overlay {
   opacity: 1;
 }
+
+/* Showcase Responsive */
+.project-card {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+}
+
+.project-card.reverse {
+  flex-direction: row-reverse;
+}
+
+.project-card > .project-visual,
+.project-card > .project-content {
+  flex: 1 1 50%;
+}
+
+@media (max-width: 768px) {
+  .project-card, 
+  .project-card.reverse {
+    flex-direction: column;
+  }
+  
+  .project-card > .project-visual {
+    min-height: 300px !important;
+    border-right: none !important;
+    border-left: none !important;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  
+  .project-card > .project-content {
+    padding: 2rem !important;
+  }
+}

@@ -205,7 +205,7 @@ const projects = [
         challenge: 'Costos de adquisición elevados y retención compleja.',
         solution: 'Implementación de CRM y funnels para maximizar la conversión en cada etapa.',
         tools: ['Go High Level', 'Simvoly', 'Meta Ads', 'Monday CRM'],
-        images: ['/images/simvoly-3.png', '/images/simvoly-funnel.png', '/images/GHL-funnel.png', '/images/Meta_Ads.png']
+        images: ['/images/funnel-1.png', '/images/ADS-1.png', '/images/11.png', '/images/5.png', '/images/6.png']
     },
     {
         id: 'orquestacion',
@@ -213,7 +213,7 @@ const projects = [
         challenge: 'Operaciones manuales lentas y propensas a errores.',
         solution: 'Conexión inter-sistemas para detonar automatizaciones complejas y eficientes.',
         tools: ['Make', 'n8n', 'Twilio'],
-        images: ['/images/make-1.png', '/images/make-2.png', '/images/make-3.png', '/images/n8n-3.png', '/images/n8n-4.png', '/images/n8n_2.png', '/images/N8N_workflow.png', '/images/n8n-agent.png', '/images/n8n-agent2.png']
+        images: ['/images/make-1.png', '/images/make-2.png', '/images/N8N-1.png', '/images/N8N-2.png', '/images/N8N-3.png']
     },
     {
         id: 'desarrollo-web',
@@ -221,7 +221,7 @@ const projects = [
         challenge: 'Necesidad de presencia digital robusta y despliegue ágil.',
         solution: 'Creación de portales y aplicaciones de nueva generación desarrolladas con IA.',
         tools: ['WordPress', 'React', 'Vibe Coding', 'Next.js'],
-        images: ['/images/hispanadeservicios.com_.png', '/images/hispanadeservicios.com_servicios_.png', '/images/Curso Mari.png', '/images/ProyectoYuli.png', '/images/muestra.png'],
+        images: ['/images/webd-1.png', '/images/webd-2.png', '/images/webd-3.png', '/images/skool-1.png'],
         links: [
             { text: 'Dashboard Analítico (Demo)', url: 'https://dashboard-iota-rust.vercel.app/' },
             { text: 'Presentación Interactiva', url: 'https://presentacion.axisdesignarts.com/' }
@@ -233,7 +233,7 @@ const projects = [
         challenge: 'Falta de seguimiento automático a prospectos y chats.',
         solution: 'Flujos conversacionales y gestión de leads centralizada.',
         tools: ['ManyChat', 'Kommo CRM', 'Social Automation'],
-        images: ['/images/kommo-1.png', '/images/mannychat-1.png', '/images/Mannychat-2.png', '/images/mannychat-3.png', '/images/mannychat-4.png']
+        images: ['/images/kommo-1.png', '/images/Manny-1.png', '/images/Manny-2.png', '/images/Manny-3.png']
     }
 ];
 
@@ -250,14 +250,14 @@ const Showcase = () => {
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
                     {projects.map((project, index) => (
-                        <div key={project.id} className="glass-panel" style={{ display: 'flex', flexDirection: index % 2 === 0 ? 'row' : 'row-reverse', flexWrap: 'wrap', overflow: 'hidden' }}>
+                        <div key={project.id} className={`glass-panel project-card ${index % 2 !== 0 ? 'reverse' : ''}`}>
                             {/* Visual/Slider Side */}
-                            <div style={{ flex: '1 1 400px', background: 'var(--bg-surface-elevated)', borderRight: index % 2 === 0 ? '1px solid rgba(255,255,255,0.05)' : 'none', borderLeft: index % 2 !== 0 ? '1px solid rgba(255,255,255,0.05)' : 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '340px', position: 'relative' }}>
+                            <div className="project-visual" style={{ background: 'var(--bg-surface-elevated)', borderRight: index % 2 === 0 ? '1px solid rgba(255,255,255,0.05)' : 'none', borderLeft: index % 2 !== 0 ? '1px solid rgba(255,255,255,0.05)' : 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '340px', position: 'relative' }}>
                                 <ImageSlider images={project.images} onImageClick={setLightboxImg} />
                             </div>
 
                             {/* Content Side */}
-                            <div style={{ flex: '1 1 400px', padding: '3rem', display: 'flex', flexDirection: 'column', gap: '1.5rem', justifyContent: 'center' }}>
+                            <div className="project-content" style={{ padding: '3rem', display: 'flex', flexDirection: 'column', gap: '1.5rem', justifyContent: 'center' }}>
                                 <div style={{ display: 'inline-flex', alignSelf: 'flex-start', padding: '4px 12px', background: 'rgba(255,255,255,0.05)', borderRadius: '4px', fontSize: '0.75rem', fontWeight: 600, color: 'var(--accent-blue)' }}>
                                     ESTUDIO DE CASO
                                 </div>
