@@ -32,8 +32,8 @@ const partners = [
     { name: 'Antigravity', src: '/images/antigv-logo.png' },
 ];
 
-// Duplicate so the marquee looks seamless
-const marqueeItems = [...partners, ...partners];
+// Triple so the marquee looks seamless and truly infinite
+const marqueeItems = [...partners, ...partners, ...partners];
 
 const About = () => {
     return (
@@ -102,7 +102,7 @@ const About = () => {
                                         <img
                                             src={p.src}
                                             alt={p.name}
-                                            style={{ height: '52px', maxWidth: '140px', objectFit: 'contain', filter: 'grayscale(100%) brightness(0.6)', transition: 'filter 0.3s' }}
+                                            style={{ height: '77px', maxWidth: '165px', objectFit: 'contain', filter: 'grayscale(100%) brightness(0.6)', transition: 'filter 0.3s' }}
                                             onMouseEnter={e => e.currentTarget.style.filter = 'grayscale(0%) brightness(1)'}
                                             onMouseLeave={e => e.currentTarget.style.filter = 'grayscale(100%) brightness(0.6)'}
                                         />
