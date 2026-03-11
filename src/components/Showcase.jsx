@@ -249,7 +249,9 @@ const Showcase = () => {
         <>
             <section id="proyectos" className="section-padding">
                 <div className="text-center mb-16" style={{ marginBottom: '4rem' }}>
-                    <h2 className="font-heading font-bold text-gradient text-4xl mb-4" style={{ fontSize: '2.5rem' }}>Casos de Estudio & Especialidades</h2>
+                    <h2 className="font-heading font-bold tracking-tight mb-4 text-gradient" style={{ fontSize: 'clamp(2.5rem, 4vw + 1rem, 3.5rem)', lineHeight: 1.1 }}>
+                        Casos de <span className="text-gradient-accent">Estudio.</span>
+                    </h2>
                     <p className="text-secondary mx-auto" style={{ maxWidth: '600px', margin: '0 auto' }}>Visualización interactiva de arquitecturas, funnels, despliegues web y orquestación implementada.</p>
                 </div>
 

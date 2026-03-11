@@ -48,10 +48,10 @@ const Contact = () => {
 
     return (
         <section id="contacto" className="section-padding" style={{ marginBottom: '4rem' }}>
-            <div className="glass-panel" style={{ maxWidth: '800px', margin: '0 auto', display: 'flex', flexWrap: 'wrap', overflow: 'hidden' }}>
+            <div className="glass-panel contact-panel" style={{ maxWidth: '800px', margin: '0 auto', display: 'flex', flexWrap: 'wrap', overflow: 'hidden' }}>
 
                 {/* Info Column */}
-                <div style={{ flex: '1 1 300px', background: 'rgba(0, 240, 255, 0.03)', padding: '3rem', borderRight: '1px solid rgba(255,255,255,0.05)' }}>
+                <div style={{ flex: '1 1 300px', background: 'rgba(255, 255, 255, 0.02)', padding: '3rem', borderRight: '1px solid rgba(255,255,255,0.05)', position: 'relative', zIndex: 1 }}>
                     <h2 className="font-heading font-bold text-gradient text-3xl mb-4">Construyamos tu Ecosistema</h2>
                     <p className="text-secondary mb-8" style={{ fontSize: '0.95rem' }}>
                         Déjame tus datos y experimenta en tiempo real cómo un Lead Magnet inteligente procesa la información y detona automatizaciones.
@@ -74,7 +74,7 @@ const Contact = () => {
                 </div>
 
                 {/* Form Column */}
-                <div style={{ flex: '1 1 400px', padding: '3rem' }}>
+                <div style={{ flex: '1 1 400px', padding: '3rem', position: 'relative', zIndex: 1 }}>
                     {submitted ? (
                         <div style={{ height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', animation: 'fadeIn 0.5s ease-out' }}>
                             <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: 'rgba(0,240,255,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem' }}>
@@ -97,7 +97,7 @@ const Contact = () => {
                                 <label style={{ display: 'block', fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: '0.5rem' }}>¿Qué cuellos de botella tiene tu negocio?</label>
                                 <textarea required name="needs" value={formData.needs} onChange={handleChange} rows={3} style={{ width: '100%', padding: '12px 16px', background: 'rgba(0,0,0,0.3)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '8px', color: 'white', fontFamily: 'var(--font-body)', outline: 'none', resize: 'vertical' }}></textarea>
                             </div>
-                            <button type="submit" disabled={isSubmitting} className="btn btn-primary" style={{ width: '100%', marginTop: '0.5rem', gap: '8px', opacity: isSubmitting ? 0.7 : 1, cursor: isSubmitting ? 'not-allowed' : 'pointer' }}>
+                            <button type="submit" disabled={isSubmitting} className="btn btn-primary" style={{ width: '100%', marginTop: '0.5rem', gap: '8px', opacity: isSubmitting ? 0.7 : 1, cursor: isSubmitting ? 'not-allowed' : 'pointer', position: 'relative', overflow: 'hidden' }}>
                                 {isSubmitting ? 'Orquestando...' : 'Enviar a la Matriz'} {!isSubmitting && <Send size={16} />}
                             </button>
                             {error && <p style={{ color: '#ff4444', fontSize: '0.85rem', textAlign: 'center', marginTop: '0.5rem' }}>{error}</p>}
@@ -109,6 +109,33 @@ const Contact = () => {
                 __html: `
         input:focus, textarea:focus { border-color: var(--accent-blue) !important; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* Automation Animations */
+        @keyframes scanData {
+            0% { transform: translateY(-100%); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(100%); opacity: 0; }
+        }
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 15px rgba(0, 240, 255, 0.05); }
+            100% { box-shadow: 0 0 30px rgba(0, 240, 255, 0.15); }
+        }
+        .contact-panel {
+            position: relative;
+            background: rgba(255, 255, 255, 0.04) !important;
+            animation: pulseGlow 3s infinite alternate;
+        }
+        .contact-panel::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, transparent, rgba(0, 240, 255, 0.1) 50%, transparent);
+            animation: scanData 4s linear infinite;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.5;
+        }
       `}} />
         </section>
     );

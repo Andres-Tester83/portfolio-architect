@@ -43,7 +43,9 @@ const TechStack = () => {
     return (
         <section id="stack" className="section-padding">
             <div className="text-center mb-16" style={{ marginBottom: '4rem' }}>
-                <h2 className="font-heading font-bold text-gradient text-4xl mb-4" style={{ fontSize: '2.5rem' }}>El Stack Tecnológico</h2>
+                <h2 className="font-heading font-bold tracking-tight mb-4 text-gradient" style={{ fontSize: 'clamp(2.5rem, 4vw + 1rem, 3.5rem)', lineHeight: 1.1 }}>
+                    Stack <span className="text-gradient-accent">Tecnológico.</span>
+                </h2>
                 <p className="text-secondary mx-auto" style={{ maxWidth: '600px', margin: '0 auto' }}>Arquitectura de 5 capas diseñada para maximizar la conversión y reducir drásticamente la fricción operativa.</p>
             </div>
 

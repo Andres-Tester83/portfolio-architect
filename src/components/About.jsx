@@ -54,7 +54,7 @@ const About = () => {
                             <User size={14} /> IDENTIDAD
                         </div>
 
-                        <h2 className="font-heading font-bold" style={{ fontSize: 'clamp(1.75rem, 5vw, 2.25rem)', marginBottom: '0.4rem' }}>Andrés</h2>
+                        <h2 className="font-heading font-bold" style={{ fontSize: 'clamp(1.75rem, 5vw, 2.25rem)', marginBottom: '0.4rem' }}>Andrés Martínez</h2>
                         <h3 className="font-heading text-secondary" style={{ fontSize: 'clamp(1rem, 3vw, 1.25rem)', fontWeight: 400, marginBottom: '1.75rem' }}>Arquitecto de Sistemas &amp; Growth Specialist</h3>
 
                         <div style={{ width: '40px', height: '2px', background: 'var(--accent-blue)', marginBottom: '2rem' }}></div>
@@ -63,7 +63,7 @@ const About = () => {
                             Me defino como un profesional enfocado en la lógica y la resolución de problemas a través de la tecnología. Mi objetivo es transformar procesos manuales en ecosistemas eficientes y rentables. Con un dominio técnico en herramientas como <strong>n8n, Make y Kommo</strong>, diseño integraciones complejas que conectan tu marketing con tu operación real.
                         </p>
                         <p className="text-secondary" style={{ fontSize: 'clamp(0.95rem, 2.5vw, 1.05rem)', lineHeight: 1.85 }}>
-                            Desde la arquitectura de funnels de venta en <strong>GoHighLevel y Simvoly</strong>, hasta la implementación de <em>Vibe Coding</em> y desarrollo en WordPress, mi enfoque es siempre dinámico: si el proyecto requiere una herramienta nueva, la aprendo y la ejecuto. Mi compromiso es la responsabilidad y la entrega de soluciones que no solo funcionen, sino que <strong>escalen tu negocio.</strong>
+                            Desde la arquitectura de funnels de venta en <strong>GoHighLevel y Simvoly</strong>, hasta la implementación de <em>Vibe Coding</em> y desarrollo en WordPress, mi enfoque es siempre dinámico: si el proyecto requiere una herramienta nueva, la aprendo y la ejecuto. Mi compromiso es la responsabilidad y la entrega de soluciones que no solo funcionen, sino que optimicen tu negocio.
                         </p>
 
                         {/* Stat badges */}
