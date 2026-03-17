@@ -303,8 +303,8 @@ const CV = () => {
                             <div className="cv-name">Andrés Martínez</div>
                             <div className="cv-role">Arquitecto de Sistemas · Growth Specialist</div>
                             <div className="cv-contacts">
-                                <a className="cv-contact-item" href={`mailto:andres@axiscorp.work`}>
-                                    <Mail size={13} /> andres@axiscorp.work
+                                <a className="cv-contact-item" href={`mailto:master@axisdesignarts.com`}>
+                                    <Mail size={13} /> master@axisdesignarts.com
                                 </a>
                                 <a className="cv-contact-item" href={PORTFOLIO_URL} target="_blank" rel="noreferrer">
                                     <Globe size={13} /> portfolio-architect.vercel.app
