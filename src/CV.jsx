@@ -1,7 +1,7 @@
 import React from 'react';
 import { Workflow, Layout, Target, MessageSquare, Mail, Globe, Printer, ExternalLink } from 'lucide-react';
 
-const PORTFOLIO_URL = 'https://portfolio-architect.vercel.app';
+const PORTFOLIO_URL = 'https://architect.axisdesignarts.com';
 
 // ── QR Code via Google Charts API (no library needed)
 const QR_URL = `https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=${encodeURIComponent(PORTFOLIO_URL)}&bgcolor=050505&color=00f0ff&margin=6`;
