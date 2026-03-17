@@ -71,13 +71,13 @@ const CV = () => {
                 .cv-header {
                     background: linear-gradient(135deg, #0d0d0d 0%, #111419 100%);
                     border-bottom: 1px solid var(--border);
-                    padding: 2.2rem 2.5rem 2rem;
+                    padding: 1.5rem 2rem 1.5rem;
                     display: flex;
                     justify-content: space-between;
                     align-items: flex-start;
                     gap: 1.5rem;
                     position: relative;
-                    overflow: hidden;
+                    overflow: visible;
                 }
                 .cv-header::after {
                     content:'';
