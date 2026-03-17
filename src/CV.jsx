@@ -63,7 +63,7 @@ const CV = () => {
                     background: var(--surface);
                     border: 1px solid var(--border);
                     border-radius: 16px;
-                    overflow: hidden;
+                    overflow: visible;
                     box-shadow: 0 0 60px rgba(0, 240, 255, 0.06);
                 }
 
@@ -131,12 +131,15 @@ const CV = () => {
                     align-items: center;
                     gap: 0.35rem;
                     flex-shrink: 0;
+                    page-break-inside: avoid;
+                    break-inside: avoid;
                 }
                 .cv-qr-block img {
-                    width: 88px; height: 88px;
+                    width: 100px; height: 100px;
                     border: 2px solid rgba(0,240,255,0.25);
                     border-radius: 8px;
                     background: #050505;
+                    display: block;
                 }
                 .cv-qr-label {
                     font-size: 0.65rem;
@@ -282,12 +285,15 @@ const CV = () => {
 
                 /* ── Print Media Overrides ── */
                 @media print {
-                    body { background: #000 !important; }
-                    .cv-wrapper { padding: 0 !important; background: #000 !important; }
-                    .cv-sheet { border-radius: 0 !important; border: none !important; box-shadow: none !important; max-width: 100% !important; }
+                    body { background: #050505 !important; }
+                    .cv-wrapper { padding: 8mm !important; background: #050505 !important; }
+                    .cv-sheet { border-radius: 4px !important; border: none !important; box-shadow: none !important; max-width: 100% !important; overflow: visible !important; }
+                    .cv-header { overflow: visible !important; }
+                    .cv-qr-block { page-break-inside: avoid !important; break-inside: avoid !important; }
+                    .cv-service-card { page-break-inside: avoid !important; break-inside: avoid !important; }
                     .cv-print-btn { display: none !important; }
                     .cv-back-link { display: none !important; }
-                    @page { size: A4; margin: 0; }
+                    @page { size: A4; margin: 8mm 10mm; }
                 }
             `}</style>
 
@@ -307,7 +313,7 @@ const CV = () => {
                                     <Mail size={13} /> master@axisdesignarts.com
                                 </a>
                                 <a className="cv-contact-item" href={PORTFOLIO_URL} target="_blank" rel="noreferrer">
-                                    <Globe size={13} /> portfolio-architect.vercel.app
+                                    <Globe size={13} /> architect.axisdesignarts.com
                                 </a>
                             </div>
                         </div>
