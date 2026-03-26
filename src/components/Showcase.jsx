@@ -257,7 +257,7 @@ const Showcase = () => {
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
                     {projects.map((project, index) => (
-                        <div key={project.id} className={`glass-panel project-card ${index % 2 !== 0 ? 'reverse' : ''}`}>
+                        <div id={project.id} key={project.id} className={`glass-panel project-card ${index % 2 !== 0 ? 'reverse' : ''}`}>
                             {/* Visual/Slider Side */}
                             <div className="project-visual" style={{ background: 'var(--bg-surface-elevated)', borderRight: index % 2 === 0 ? '1px solid rgba(255,255,255,0.05)' : 'none', borderLeft: index % 2 !== 0 ? '1px solid rgba(255,255,255,0.05)' : 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '340px', position: 'relative' }}>
                                 <ImageSlider images={project.images} onImageClick={setLightboxImg} />

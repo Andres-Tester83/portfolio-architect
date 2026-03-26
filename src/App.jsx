@@ -1,6 +1,7 @@
 import React from 'react';
 import Hero from './components/Hero.jsx';
 import About from './components/About.jsx';
+import Solutions from './components/Solutions.jsx';
 import TechStack from './components/TechStack.jsx';
 import Showcase from './components/Showcase.jsx';
 import Contact from './components/Contact.jsx';
@@ -15,6 +16,7 @@ function App() {
                     </div>
                     <nav className="desktop-nav flex gap-6" style={{ gap: '2.5rem' }}>
                         <a href="#about" className="text-secondary nav-link" style={{ fontSize: '0.9rem', fontWeight: 500, transition: 'color 0.2s' }}>Identidad</a>
+                        <a href="#soluciones" className="text-secondary nav-link" style={{ fontSize: '0.9rem', fontWeight: 500, transition: 'color 0.2s' }}>Soluciones</a>
                         <a href="#stack" className="text-secondary nav-link" style={{ fontSize: '0.9rem', fontWeight: 500, transition: 'color 0.2s' }}>Stack</a>
                         <a href="#proyectos" className="text-secondary nav-link" style={{ fontSize: '0.9rem', fontWeight: 500, transition: 'color 0.2s' }}>Proyectos</a>
                         <a href="#contacto" className="text-secondary nav-link" style={{ fontSize: '0.9rem', fontWeight: 500, transition: 'color 0.2s' }}>Contacto</a>
@@ -22,7 +24,7 @@ function App() {
                 </div>
                 {/* Mobile nav row */}
                 <div className="mobile-nav" style={{ display: 'none', borderTop: '1px solid rgba(255,255,255,0.05)', padding: '0.6rem 1rem', justifyContent: 'center', gap: '0', flexWrap: 'wrap' }}>
-                    {['Identidad|#about', 'Stack|#stack', 'Proyectos|#proyectos', 'Contacto|#contacto'].map((item, i, arr) => {
+                    {['Identidad|#about', 'Soluciones|#soluciones', 'Stack|#stack', 'Proyectos|#proyectos', 'Contacto|#contacto'].map((item, i, arr) => {
                         const [label, href] = item.split('|');
                         return (
                             <span key={href} style={{ display: 'inline-flex', alignItems: 'center' }}>
@@ -44,9 +46,10 @@ function App() {
 
             <div className="stripe-a"><main className="container"><Hero /></main></div>
             <div className="stripe-b"><div className="container"><About /></div></div>
-            <div className="stripe-a"><div className="container"><TechStack /></div></div>
-            <div className="stripe-b"><div className="container"><Showcase /></div></div>
-            <div className="stripe-a"><div className="container"><Contact /></div></div>
+            <div className="stripe-a"><div className="container"><Solutions /></div></div>
+            <div className="stripe-b"><div className="container"><TechStack /></div></div>
+            <div className="stripe-a"><div className="container"><Showcase /></div></div>
+            <div className="stripe-b"><div className="container"><Contact /></div></div>
 
             <footer className="container py-12 text-center text-secondary mt-20" style={{ borderTop: '1px solid rgba(255, 255, 255, 0.05)' }}>
                 <p>© {new Date().getFullYear()} Architect of Growth. Todos los derechos reservados.</p>
