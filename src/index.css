@@ -14,8 +14,8 @@
   --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 
   /* Section stripe backgrounds */
-  --stripe-a: #050505;
-  --stripe-b: #0d0d0f;
+  --stripe-a: rgba(5, 5, 5, 0.6);
+  --stripe-b: rgba(13, 13, 15, 0.6);
 }
 
 * {

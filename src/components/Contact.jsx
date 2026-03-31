@@ -7,9 +7,61 @@ const Contact = () => {
 
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [error, setError] = useState(null);
+    const [honeypot, setHoneypot] = useState('');
+
+    const validateInputs = () => {
+        // Name: Letters and spaces, 3 to 50 chars
+        const nameRegex = /^[a-zA-ZÀ-ÿ\s]{3,50}$/;
+        if (!nameRegex.test(formData.name.trim())) {
+            return "Por favor ingresa un nombre válido (solo letras, mín. 3 caracteres).";
+        }
+        
+        // Email: Standard email regex
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(formData.email.trim())) {
+            return "Por favor ingresa un correo electrónico válido.";
+        }
+        
+        // Needs: Min 15 chars to avoid basic dummy data "test"
+        if (formData.needs.trim().length < 15) {
+            return "Por favor detalla un poco más tus cuellos de botella (mín. 15 caracteres).";
+        }
+        
+        return null;
+    };
+
+    const isRateLimited = () => {
+        const lastSubmission = localStorage.getItem('last_portfolio_contact');
+        if (lastSubmission) {
+            const timePassed = Date.now() - parseInt(lastSubmission, 10);
+            const tenMinutes = 10 * 60 * 1000;
+            if (timePassed < tenMinutes) {
+                return true;
+            }
+        }
+        return false;
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        
+        if (honeypot.trim() !== '') {
+            // Bot detected. Silent success to prevent retries.
+            setSubmitted(true);
+            return;
+        }
+
+        if (isRateLimited()) {
+            setError("Tus sistemas ya se están comunicando con la matriz. Espera unos minutos para enviar de nuevo.");
+            return;
+        }
+
+        const inputError = validateInputs();
+        if (inputError) {
+            setError(inputError);
+            return;
+        }
+
         setIsSubmitting(true);
         setError(null);
 
@@ -30,6 +82,7 @@ const Contact = () => {
 
             // Consideramos éxito si el status es 200 o si es opaque (CORS sin respuesta preflight configurada)
             if (response.ok || response.status === 200 || response.type === 'opaque') {
+                localStorage.setItem('last_portfolio_contact', Date.now().toString());
                 setSubmitted(true);
             } else {
                 throw new Error('Error en la comunicación con n8n');
@@ -85,6 +138,16 @@ const Contact = () => {
                         </div>
                     ) : (
                         <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                            {/* Honeypot field - visually hidden, prevents bot spam if filled */}
+                            <input 
+                                type="text" 
+                                name="verify_bot_trap" 
+                                value={honeypot} 
+                                onChange={(e) => setHoneypot(e.target.value)} 
+                                style={{ display: 'none' }} 
+                                tabIndex="-1" 
+                                autoComplete="off" 
+                            />
                             <div>
                                 <label style={{ display: 'block', fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: '0.5rem' }}>Nombre Completo</label>
                                 <input required type="text" name="name" value={formData.name} onChange={handleChange} style={{ width: '100%', padding: '12px 16px', background: 'rgba(0,0,0,0.3)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '8px', color: 'white', fontFamily: 'var(--font-body)', outline: 'none' }} />

@@ -5,14 +5,17 @@ import Solutions from './components/Solutions.jsx';
 import TechStack from './components/TechStack.jsx';
 import Showcase from './components/Showcase.jsx';
 import Contact from './components/Contact.jsx';
+import BackgroundAnimation from './components/BackgroundAnimation.jsx';
+import BrandLogo from '../Brand/Logo-Architect.svg';
 
 function App() {
     return (
         <div className="app-wrapper">
+            <BackgroundAnimation />
             <header style={{ position: 'sticky', top: 0, zIndex: 100, backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', borderBottom: '1px solid rgba(255, 255, 255, 0.05)', backgroundColor: 'rgba(5, 5, 5, 0.7)' }}>
                 <div className="container" style={{ padding: '1rem 2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <div className="font-heading font-bold tracking-tight" style={{ fontSize: '1.5rem' }}>
-                        Architect<span style={{ color: 'var(--accent-blue)' }}>.</span>
+                    <div className="font-heading font-bold tracking-tight" style={{ display: 'flex', alignItems: 'center' }}>
+                        <img src={BrandLogo} alt="Architect Logo" style={{ height: '32px', width: 'auto' }} />
                     </div>
                     <nav className="desktop-nav flex gap-6" style={{ gap: '2.5rem' }}>
                         <a href="#about" className="text-secondary nav-link" style={{ fontSize: '0.9rem', fontWeight: 500, transition: 'color 0.2s' }}>Identidad</a>
@@ -51,8 +54,9 @@ function App() {
             <div className="stripe-a"><div className="container"><Showcase /></div></div>
             <div className="stripe-b"><div className="container"><Contact /></div></div>
 
-            <footer className="container py-12 text-center text-secondary mt-20" style={{ borderTop: '1px solid rgba(255, 255, 255, 0.05)' }}>
-                <p>© {new Date().getFullYear()} Architect of Growth. Todos los derechos reservados.</p>
+            <footer className="container py-12 text-center text-secondary mt-20" style={{ borderTop: '1px solid rgba(255, 255, 255, 0.05)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
+                <img src={BrandLogo} alt="Architect Logo" style={{ height: '24px', opacity: 0.7 }} />
+                <p style={{ fontSize: '0.85rem' }}>© {new Date().getFullYear()} Architect of Growth. Todos los derechos reservados.</p>
             </footer>
         </div>
     );
