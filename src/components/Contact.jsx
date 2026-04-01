@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Send, CheckCircle } from 'lucide-react';
+import { trackMetaEvent, getMetaCookies } from '../utils/pixel.js';
 
 const Contact = () => {
     const [formData, setFormData] = useState({ name: '', email: '', company: '', needs: '' });
@@ -64,6 +65,29 @@ const Contact = () => {
 
         setIsSubmitting(true);
         setError(null);
+
+        // Generamos ID único para CAPI
+        const eventId = crypto.randomUUID();
+        const metaCookies = getMetaCookies();
+
+        // Enviamos el evento local
+        trackMetaEvent('Lead', {
+            content_name: 'Formulario de Contacto'
+        }, { eventID: eventId });
+
+        // PING CAPI (Vercel Serverless Function)
+        // Lo mandamos en segundo plano sin await blockeante para no hacer esperar al UI
+        fetch('/api/meta-conversion', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                eventId,
+                email: formData.email,
+                name: formData.name,
+                fbp: metaCookies.fbp,
+                fbc: metaCookies.fbc
+            })
+        }).catch(err => console.error("Error CAPI request:", err));
 
         // REEMPLAZAR CON TU URL REAL DE N8N
         const WEBHOOK_URL = import.meta.env.VITE_N8N_WEBHOOK_URL || 'https://scale.axiscorp.work/webhook/architect';
