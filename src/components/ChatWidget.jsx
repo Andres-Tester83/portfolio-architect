@@ -43,8 +43,7 @@ const ChatWidget = () => {
     setIsLoading(true);
 
     try {
-      // Usamos el Webhook configurado en .env o el productivo de respaldo
-      const webhookUrl = import.meta.env.VITE_N8N_WEBHOOK_URL || 'https://scale.axiscorp.work/webhook/arquitect';
+      const webhookUrl = import.meta.env.VITE_CHATBOT_WEBHOOK_URL || 'https://scale.axiscorp.work/webhook/arquitect';
       const secretToken = import.meta.env.VITE_CHATWIDGET_SECRET_TOKEN || 'ArchitectGrowth_SecureToken_2026';
       
       const response = await fetch(webhookUrl, {
