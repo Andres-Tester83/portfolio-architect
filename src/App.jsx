@@ -6,6 +6,7 @@ import TechStack from './components/TechStack.jsx';
 import Showcase from './components/Showcase.jsx';
 import Contact from './components/Contact.jsx';
 import BackgroundAnimation from './components/BackgroundAnimation.jsx';
+import ChatWidget from './components/ChatWidget.jsx';
 import BrandLogo from '../Brand/Logo-Architect.svg';
 
 function App() {
@@ -57,7 +58,14 @@ function App() {
             <footer className="container py-12 text-center text-secondary mt-20" style={{ borderTop: '1px solid rgba(255, 255, 255, 0.05)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
                 <img src={BrandLogo} alt="Architect Logo" style={{ height: '24px', opacity: 0.7 }} />
                 <p style={{ fontSize: '0.85rem' }}>© {new Date().getFullYear()} Architect of Growth. Todos los derechos reservados.</p>
+                <div style={{ display: 'flex', gap: '1rem', fontSize: '0.8rem', opacity: 0.7, marginTop: '0.5rem' }}>
+                    <a href="/privacy.html" style={{ color: 'inherit', textDecoration: 'none' }} onMouseOver={e => e.target.style.textDecoration='underline'} onMouseOut={e => e.target.style.textDecoration='none'}>Política de Privacidad</a>
+                    <span>|</span>
+                    <a href="/terms.html" style={{ color: 'inherit', textDecoration: 'none' }} onMouseOver={e => e.target.style.textDecoration='underline'} onMouseOut={e => e.target.style.textDecoration='none'}>Términos y Condiciones</a>
+                </div>
             </footer>
+            
+            <ChatWidget />
         </div>
     );
 }
