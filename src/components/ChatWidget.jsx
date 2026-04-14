@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import BrandLogo from '../../Brand/Logo-Architect.svg';
+import BrandLogo from '../../Brand/icon-arquitect.png';
 
 const ChatWidget = () => {
   const [isOpen, setIsOpen] = useState(false);
