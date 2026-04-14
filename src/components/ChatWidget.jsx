@@ -43,9 +43,9 @@ const ChatWidget = () => {
     setIsLoading(true);
 
     try {
-      // Usamos el Webhook configurado, o uno temporal si no está en el .env
-      const webhookUrl = import.meta.env.VITE_N8N_WEBHOOK_URL || 'https://tu-n8n.ejemplo.com/webhook/chat-portfolio';
-      const secretToken = import.meta.env.VITE_CHATWIDGET_SECRET_TOKEN || 'secure_token_default';
+      // Usamos el Webhook configurado en .env o el productivo de respaldo
+      const webhookUrl = import.meta.env.VITE_N8N_WEBHOOK_URL || 'https://scale.axiscorp.work/webhook/arquitect';
+      const secretToken = import.meta.env.VITE_CHATWIDGET_SECRET_TOKEN || 'ArchitectGrowth_SecureToken_2026';
       
       const response = await fetch(webhookUrl, {
         method: 'POST',
