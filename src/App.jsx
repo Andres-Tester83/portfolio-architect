@@ -6,7 +6,6 @@ import TechStack from './components/TechStack.jsx';
 import Showcase from './components/Showcase.jsx';
 import Contact from './components/Contact.jsx';
 import BackgroundAnimation from './components/BackgroundAnimation.jsx';
-import ChatWidget from './components/ChatWidget.jsx';
 import BrandLogo from '../Brand/Logo-Architect.svg';
 
 function App() {
@@ -64,8 +63,6 @@ function App() {
                     <a href="/terms.html" style={{ color: 'inherit', textDecoration: 'none' }} onMouseOver={e => e.target.style.textDecoration='underline'} onMouseOut={e => e.target.style.textDecoration='none'}>Términos y Condiciones</a>
                 </div>
             </footer>
-            
-            <ChatWidget />
         </div>
     );
 }
