@@ -1,7 +1,12 @@
 import React from 'react';
-import { User, Code2, Rocket, Workflow, Layout, MessageSquare, Target } from 'lucide-react';
+import { User, Code2, Rocket, Workflow, Layout, MessageSquare, Target, Megaphone } from 'lucide-react';
 
 const services = [
+    {
+        icon: <Megaphone size={24} color="var(--accent-blue)" />,
+        title: "Meta Ads (FB & IG)",
+        desc: "Gestión y desarrollo integral: desde configuración de Business Manager y Pixel/CAPI hasta la puesta en marcha de campañas."
+    },
     {
         icon: <Workflow size={24} color="var(--accent-blue)" />,
         title: "Orquestación & IA",

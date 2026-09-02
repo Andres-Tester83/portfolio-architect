@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andrés Martínez | Arquitecto de Sistemas & Growth Specialist</title>
+    <meta name="description" content="Arquitectura de ecosistemas digitales mediante IA, Automatización Avanzada y Funnels de Alta Conversión en GoHighLevel, n8n y Kommo.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        :root {
+            --bg-dark: #050505;
+            --bg-surface: #0a0a0a;
+            --bg-surface-elevated: #111111;
+            --accent-blue: #00f0ff;
+            --accent-blue-hover: #33f3ff;
+            --text-primary: #ffffff;
+            --text-secondary: #a1a1aa;
+            --font-heading: 'Outfit', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --stripe-a: rgba(5, 5, 5, 0.6);
+            --stripe-b: rgba(13, 13, 15, 0.6);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(255, 255, 255, 0.015) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(0, 240, 255, 0.03) 0%, transparent 50%);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            letter-spacing: -0.02em;
+        }
+
+        .glass-panel {
+            background: rgba(17, 17, 17, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .glass-panel:hover {
+            border-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #ffffff 0%, #a1a1aa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .text-gradient-accent {
+            background: linear-gradient(135deg, #ffffff 0%, var(--accent-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-padding {
+            padding: 90px 0;
+        }
+
+        .stripe-a { background-color: var(--stripe-a); }
+        .stripe-b { 
+            background-color: var(--stripe-b);
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            box-shadow: inset 0 1px 0 rgba(0, 240, 255, 0.03);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--text-primary);
+            color: var(--bg-dark);
+        }
+
+        .btn-primary:hover {
+            background: var(--text-secondary);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent-blue);
+            color: var(--accent-blue);
+            transform: translateY(-2px);
+        }
+
+        .btn-whatsapp {
+            background: rgba(37, 211, 102, 0.15);
+            color: #25D366;
+            border: 1px solid rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-whatsapp:hover {
+            background: rgba(37, 211, 102, 0.3);
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(37, 211, 102, 0.3);
+        }
+
+        /* ── Marquee Continuo ── */
+        @keyframes marquee-scroll {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-50%); }
+        }
+
+        .marquee-track {
+            display: flex;
+            width: max-content;
+            animation: marquee-scroll 32s linear infinite;
+        }
+
+        .marquee-wrapper:hover .marquee-track {
+            animation-play-state: paused;
+        }
+
+        .marquee-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem 1.5rem;
+            flex-shrink: 0;
+        }
+
+        /* ── Canvas de Fondo ── */
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Responsive Project Card layout */
+        .project-card {
+            display: flex;
+            flex-direction: row;
+            overflow: hidden;
+        }
+
+        .project-card.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .project-card > .project-visual,
+        .project-card > .project-content {
+            flex: 1 1 50%;
+        }
+
+        @media (max-width: 768px) {
+            .section-padding { padding: 60px 0; }
+            .project-card, .project-card.reverse { flex-direction: column; }
+            .project-card > .project-visual {
+                min-height: 280px !important;
+                border-right: none !important;
+                border-left: none !important;
+                border-bottom: 1px solid rgba(255,255,255,0.05);
+            }
+            .project-card > .project-content { padding: 1.75rem !important; }
+            .about-card { padding: 2rem 1.5rem !important; }
+        }
+
+        /* Scanner line animation for Contact container */
+        @keyframes scanData {
+            0% { transform: translateY(-100%); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(100%); opacity: 0; }
+        }
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 15px rgba(0, 240, 255, 0.05); }
+            100% { box-shadow: 0 0 30px rgba(0, 240, 255, 0.15); }
+        }
+
+        .contact-panel {
+            position: relative;
+            background: rgba(255, 255, 255, 0.04) !important;
+            animation: pulseGlow 3s infinite alternate;
+        }
+        .contact-panel::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, transparent, rgba(0, 240, 255, 0.1) 50%, transparent);
+            animation: scanData 4s linear infinite;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.4;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Dynamic Background Canvas -->
+    <canvas id="bg-canvas"></canvas>
+
+    <div style="position: relative; z-index: 1;">
+
+        <!-- ── Navigation Header ── -->
+        <header style="position: sticky; top: 0; z-index: 100; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.05); background-color: rgba(5, 5, 5, 0.8);">
+            <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+                <a href="#" class="flex items-center gap-3">
+                    <!-- Brand SVG Logo Inline -->
+                    <svg viewBox="0 0 1876.51 396.7" style="height: 32px; width: auto;">
+                        <path fill="#00f0ff" d="m158.38,215.83c0-16.4,12.09-29.06,28.77-29.06s28.48,12.66,28.48,29.06-12.08,29.06-28.48,29.06-28.77-12.66-28.77-29.06Z"/>
+                        <path fill="#ffffff" d="m203.2,257.2l13.36,37.98h73.8L180.67,9.25c-42.06,0-79.79,25.84-95,65.05L0,295.18h73.8s6.89-.25,10.26-.25c39.87,0,76.73-12.97,106.71-34.84-1.24.1-2.5.17-3.77.17-24.54,0-44.43-19.89-44.43-44.43,0-1.76.11-3.49.31-5.2-13.38,8.12-28.56,13.56-44.81,15.56l47.11-133.88,28.54,81.1c4.19-1.31,8.65-2.02,13.28-2.02,24.54,0,44.43,19.89,44.43,44.43,0,18.82-11.71,34.89-28.23,41.37Z"/>
+                        <path fill="#ffffff" d="m317.92,97.68h69.95v12.46c13.27-10.85,29.34-16.48,49.85-16.48,18.49,0,32.16,4.82,41.81,14.87l-40.6,54.27c-4.82-4.82-12.06-8.04-22.11-8.04-18.49,0-28.94,10.85-28.94,32.56v106.93h-69.95V97.68Z"/>
+                        <path fill="#ffffff" d="m475.91,196.17c0-59.49,39.39-102.51,94.06-102.51,20.1,0,37.79,6.43,50.65,17.69v-13.67h68.74v298.28h-68.74v-114.97c-12.86,10.85-30.55,17.28-50.65,17.28-54.67,0-94.06-43.01-94.06-102.1Zm147.53-.4c0-23.32-15.68-39.8-38.19-39.8s-38.59,16.88-38.59,39.8,16.08,40.2,38.19,40.2,38.59-16.48,38.59-40.2Z"/>
+                        <path fill="#ffffff" d="m725.16,211.44v-113.76h69.95v113.76c0,16.48,10.05,26.53,25.33,26.53s25.32-10.05,25.32-26.53v-113.76h69.95v113.76c0,51.86-39.39,87.23-95.27,87.23s-95.27-36.18-95.27-87.23Z"/>
+                        <path fill="#ffffff" d="m949.48,37.38c0-20.9,15.28-37.38,36.58-37.38s36.98,16.48,36.98,37.38-15.67,37.38-36.98,37.38-36.58-16.48-36.58-37.38Zm1.61,60.3h70.34v196.57h-70.34V97.68Z"/>
+                        <path fill="#ffffff" d="m1088.97,155.97h-43.41v-58.29h43.41V16.48h69.95v81.2h43.41v58.29h-43.41v138.28h-69.95v-138.28Z"/>
+                        <path fill="#ffffff" d="m1210.39,195.77c0-59.09,45.83-102.91,107.33-102.91s102.11,41.4,102.11,98.49c0,7.64-.81,15.68-3.22,26.53l-137.88.8c6.03,19.3,21.3,29.75,44.22,29.75,18.89,0,33.77-6.43,45.43-19.7l36.58,36.58c-19.7,22.11-47.43,33.37-82,33.37-66.33,0-112.56-42.21-112.56-102.91Zm68.34-22.51l76.38-.4c-4.42-19.7-16.88-29.75-36.58-29.75s-34.17,10.85-39.8,30.15Z"/>
+                        <path fill="#ffffff" d="m1433.1,196.17c0-59.49,48.24-103.31,111.35-103.31,30.55,0,55.88,10.45,76.38,30.55l-44.22,44.22c-8.04-8.04-18.09-12.06-32.16-12.06-22.91,0-40.2,16.08-40.2,40.2s17.69,40.6,40.2,40.6c15.28,0,25.73-5.22,33.37-14.07l44.62,44.22c-22.11,21.7-46.63,32.16-78.79,32.16-62.71,0-110.55-43.41-110.55-102.51Z"/>
+                        <path fill="#ffffff" d="m1671.49,155.97h-43.41v-58.29h43.41V16.48h69.95v81.2h43.41v58.29h-43.41v138.28h-69.95v-138.28Z"/>
+                        <path fill="#00f0ff" d="m1796.51,258.07c0-22.92,16.89-40.6,40.2-40.6s39.8,17.68,39.8,40.6-16.88,40.6-39.8,40.6-40.2-17.69-40.2-40.6Z"/>
+                    </svg>
+                </a>
+                
+                <nav class="hidden md:flex gap-8">
+                    <a href="#about" class="text-gray-400 hover:text-white font-medium text-sm transition-colors">Identidad</a>
+                    <a href="#soluciones" class="text-gray-400 hover:text-white font-medium text-sm transition-colors">Soluciones</a>
+                    <a href="#proyectos" class="text-gray-400 hover:text-white font-medium text-sm transition-colors">Proyectos</a>
+                    <a href="#contacto" class="text-gray-400 hover:text-white font-medium text-sm transition-colors">Contacto</a>
+                </nav>
+
+                <div class="md:hidden flex items-center">
+                    <a href="#contacto" class="text-xs px-3 py-1.5 rounded-full border border-cyan-500/40 text-cyan-400 font-medium">Agendar</a>
+                </div>
+            </div>
+        </header>
+
+        <!-- ── Hero Section ── -->
+        <div class="stripe-a">
+            <main class="max-w-6xl mx-auto px-6">
+                <section class="section-padding flex flex-col items-center justify-center text-center my-10" style="min-height: 60vh;">
+                    <div class="glass-panel px-4 py-2 rounded-full mb-8 inline-flex items-center gap-2 border border-cyan-500/30 bg-cyan-500/5">
+                        <span style="width: 8px; height: 8px; border-radius: 50%; background: #00f0ff; box-shadow: 0 0 8px #00f0ff;"></span>
+                        <span class="text-xs text-white font-medium tracking-wide uppercase">AVAILABLE FOR NEW PROJECTS</span>
+                    </div>
+
+                    <h1 class="font-bold tracking-tight mb-6 text-gradient text-4xl sm:text-6xl md:text-7xl leading-tight max-w-4xl">
+                        Sistemas que Piensan.<br />
+                        <span class="text-gradient-accent">Negocios que Escalan.</span>
+                    </h1>
+
+                    <p class="text-gray-400 mb-10 text-lg sm:text-xl max-w-2xl mx-auto">
+                        Arquitectura de ecosistemas digitales mediante IA, Automatización Avanzada y Funnels de Alta Conversión en GoHighLevel & Kommo.
+                    </p>
+
+                    <div class="flex flex-wrap gap-4 justify-center">
+                        <a href="#contacto" class="btn btn-primary gap-2">
+                            <i data-lucide="calendar" class="w-5 h-5"></i> Agendar Consultoría
+                        </a>
+                        <a href="https://wa.me/584146916311" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp gap-2">
+                            <i data-lucide="message-square" class="w-5 h-5"></i> WhatsApp Directo
+                        </a>
+                    </div>
+                </section>
+            </main>
+        </div>
+
+        <!-- ── About / Identity Section ── -->
+        <div class="stripe-b" id="about">
+            <div class="max-w-6xl mx-auto px-6 py-20">
+                <div class="glass-panel about-card p-8 sm:p-14 relative overflow-hidden">
+                    
+                    <div class="relative z-10 max-w-3xl">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 bg-white/5 rounded-full text-xs font-semibold text-cyan-400 mb-6 border border-cyan-500/20">
+                            <i data-lucide="user" class="w-3.5 h-3.5"></i> IDENTIDAD
+                        </div>
+
+                        <h2 class="text-3xl sm:text-4xl font-bold mb-1">Andrés Martínez</h2>
+                        <h3 class="text-lg sm:text-xl text-gray-400 font-normal mb-6">Arquitecto de Sistemas & Growth Specialist</h3>
+
+                        <div class="w-10 h-0.5 bg-cyan-400 mb-8"></div>
+
+                        <p class="text-gray-300 text-base sm:text-lg leading-relaxed mb-6">
+                            Me defino como un profesional enfocado en la lógica y la resolución de problemas a través de la tecnología. Mi objetivo es transformar procesos manuales en ecosistemas eficientes y rentables. Con un dominio técnico en herramientas como <strong>n8n, Make y Kommo</strong>, diseño integraciones complejas que conectan tu marketing con tu operación real.
+                        </p>
+                        <p class="text-gray-300 text-base sm:text-lg leading-relaxed">
+                            Desde la arquitectura de funnels de venta en <strong>GoHighLevel y Simvoly</strong>, hasta la implementación de <em>Vibe Coding</em> y desarrollo en WordPress, mi enfoque es siempre dinámico: si el proyecto requiere una herramienta nueva, la aprendo y la ejecuto con excelencia.
+                        </p>
+
+                        <!-- Stat Badges -->
+                        <div class="flex flex-wrap gap-6 mt-10">
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 rounded-lg bg-cyan-500/10 flex items-center justify-center flex-shrink-0 border border-cyan-500/20">
+                                    <i data-lucide="code-2" class="w-5 h-5 text-cyan-400"></i>
+                                </div>
+                                <div>
+                                    <strong class="text-sm text-white block">Aprendizaje</strong>
+                                    <span class="text-xs text-gray-400">Empírico &amp; IA</span>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 rounded-lg bg-cyan-500/10 flex items-center justify-center flex-shrink-0 border border-cyan-500/20">
+                                    <i data-lucide="rocket" class="w-5 h-5 text-cyan-400"></i>
+                                </div>
+                                <div>
+                                    <strong class="text-sm text-white block">Enfoque</strong>
+                                    <span class="text-xs text-gray-400">Escalabilidad</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Partner Logo Marquee -->
+                    <div class="mt-12 pt-8 border-t border-white/10">
+                        <p class="text-xs font-semibold tracking-widest text-gray-400 uppercase mb-6">Stack de herramientas comprobadas</p>
+                        <div class="marquee-wrapper overflow-hidden" style="-webkit-mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%); mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);">
+                            <div class="marquee-track">
+                                <div class="marquee-item"><img src="/images/n8n-logo.png" alt="n8n" class="h-16 max-w-[150px] object-contain grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100"></div>
+                                <div class="marquee-item"><img src="/images/make-logo.png" alt="Make" class="h-16 max-w-[150px] object-contain grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100"></div>
+                                <div class="marquee-item"><img src="/images/kommo-logo.png" alt="Kommo" class="h-16 max-w-[150px] object-contain grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100"></div>
+                                <div class="marquee-item"><img src="/images/GHL-logo.png" alt="GoHighLevel" class="h-16 max-w-[150px] object-contain grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100"></div>
+                                <div class="marquee-item"><img src="/images/antigv-logo.png" alt="Antigravity" class="h-16 max-w-[150px] object-contain grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100"></div>
+                                <!-- Duplicado para loop infinito -->
+                                <div class="marquee-item"><img src="/images/n8n-logo.png" alt="n8n" class="h-16 max-w-[150px] object-contain grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100"></div>
+                                <div class="marquee-item"><img src="/images/make-logo.png" alt="Make" class="h-16 max-w-[150px] object-contain grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100"></div>
+                                <div class="marquee-item"><img src="/images/kommo-logo.png" alt="Kommo" class="h-16 max-w-[150px] object-contain grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100"></div>
+                                <div class="marquee-item"><img src="/images/GHL-logo.png" alt="GoHighLevel" class="h-16 max-w-[150px] object-contain grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100"></div>
+                                <div class="marquee-item"><img src="/images/antigv-logo.png" alt="Antigravity" class="h-16 max-w-[150px] object-contain grayscale hover:grayscale-0 transition-all opacity-60 hover:opacity-100"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Services Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 mt-8">
+                    <div class="glass-panel p-6 flex flex-col gap-4 border-t-2 border-t-transparent hover:border-t-cyan-400 transition-all">
+                        <div class="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center border border-cyan-500/20">
+                            <i data-lucide="megaphone" class="w-6 h-6 text-cyan-400"></i>
+                        </div>
+                        <h4 class="font-bold text-lg">Meta Ads (FB &amp; IG)</h4>
+                        <p class="text-gray-400 text-sm leading-relaxed">Gestión y desarrollo integral: desde configuración de Business Manager y Pixel/CAPI hasta la puesta en marcha de campañas.</p>
+                    </div>
+
+                    <div class="glass-panel p-6 flex flex-col gap-4 border-t-2 border-t-transparent hover:border-t-cyan-400 transition-all">
+                        <div class="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center border border-cyan-500/20">
+                            <i data-lucide="workflow" class="w-6 h-6 text-cyan-400"></i>
+                        </div>
+                        <h4 class="font-bold text-lg">Orquestación &amp; IA</h4>
+                        <p class="text-gray-400 text-sm leading-relaxed">Sistemas n8n y Make interconectados con LLMs para escalar operaciones 24/7.</p>
+                    </div>
+
+                    <div class="glass-panel p-6 flex flex-col gap-4 border-t-2 border-t-transparent hover:border-t-cyan-400 transition-all">
+                        <div class="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center border border-cyan-500/20">
+                            <i data-lucide="layout" class="w-6 h-6 text-cyan-400"></i>
+                        </div>
+                        <h4 class="font-bold text-lg">Webs &amp; Vibe Coding</h4>
+                        <p class="text-gray-400 text-sm leading-relaxed">Desarrollo y diseño web acelerado por IA, garantizando MVPs técnicos para producción.</p>
+                    </div>
+
+                    <div class="glass-panel p-6 flex flex-col gap-4 border-t-2 border-t-transparent hover:border-t-cyan-400 transition-all">
+                        <div class="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center border border-cyan-500/20">
+                            <i data-lucide="target" class="w-6 h-6 text-cyan-400"></i>
+                        </div>
+                        <h4 class="font-bold text-lg">Arquitectura de CRM</h4>
+                        <p class="text-gray-400 text-sm leading-relaxed">Implementación de Kommo, GHL y Monday para mapear trayectos de ventas sin fricción.</p>
+                    </div>
+
+                    <div class="glass-panel p-6 flex flex-col gap-4 border-t-2 border-t-transparent hover:border-t-cyan-400 transition-all">
+                        <div class="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center border border-cyan-500/20">
+                            <i data-lucide="message-square" class="w-6 h-6 text-cyan-400"></i>
+                        </div>
+                        <h4 class="font-bold text-lg">Embudos &amp; Chatbots</h4>
+                        <p class="text-gray-400 text-sm leading-relaxed">Automatización en ManyChat y WhatsApp atada a funnels de alta conversión.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ── Real Business Impact Solutions ── -->
+        <div class="stripe-a" id="soluciones">
+            <div class="max-w-6xl mx-auto px-6 section-padding">
+                <div class="text-center mb-16">
+                    <h2 class="font-bold tracking-tight mb-4 text-gradient text-3xl sm:text-5xl">
+                        <span class="text-gradient-accent">Impacto Real</span> en tu Negocio.
+                    </h2>
+                    <p class="text-gray-400 max-w-2xl mx-auto text-base sm:text-lg">
+                        Si la tecnología suena complicada, hablemos de resultados. Así es como mi trabajo se traduce en beneficios directos para ti y tus clientes.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Solution Card 1 -->
+                    <div class="glass-panel p-8 flex flex-col gap-5 hover:-translate-y-2 hover:shadow-[0_10px_40px_-10px_rgba(0,240,255,0.15)] transition-all cursor-pointer relative overflow-hidden" onclick="document.getElementById('contacto').scrollIntoView({behavior: 'smooth'})">
+                        <div class="w-16 h-16 rounded-2xl bg-cyan-500/10 flex items-center justify-center border border-cyan-500/20">
+                            <i data-lucide="message-square" class="w-8 h-8 text-cyan-400"></i>
+                        </div>
+                        
+                        <div class="absolute top-8 right-8 flex items-center gap-1.5 bg-cyan-500/10 text-cyan-400 px-3 py-1 rounded-full text-xs font-semibold border border-cyan-500/20">
+                            <i data-lucide="play-circle" class="w-3.5 h-3.5"></i> CONSULTAR
+                        </div>
+                        
+                        <h3 class="text-xl font-bold text-white">Atención y Ventas 24/7</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed flex-grow">
+                            Imagina que un cliente potencial escribe a las 3 AM. Un sistema califica sus dudas y le agenda directamente en tu calendario sin intervención humana.
+                        </p>
+                        
+                        <div class="pt-5 border-t border-white/5 text-xs text-cyan-400 font-medium">
+                            ✓ Ideal para redes sociales y WhatsApp.
+                        </div>
+                    </div>
+
+                    <!-- Solution Card 2 -->
+                    <div class="glass-panel p-8 flex flex-col gap-5 hover:-translate-y-2 hover:shadow-[0_10px_40px_-10px_rgba(0,240,255,0.15)] transition-all cursor-pointer relative overflow-hidden" onclick="document.getElementById('proyectos').scrollIntoView({behavior: 'smooth'})">
+                        <div class="w-16 h-16 rounded-2xl bg-cyan-500/10 flex items-center justify-center border border-cyan-500/20">
+                            <i data-lucide="zap" class="w-8 h-8 text-cyan-400"></i>
+                        </div>
+                        
+                        <div class="absolute top-8 right-8 flex items-center gap-1.5 bg-cyan-500/10 text-cyan-400 px-3 py-1 rounded-full text-xs font-semibold border border-cyan-500/20">
+                            <i data-lucide="play-circle" class="w-3.5 h-3.5"></i> VER CASOS
+                        </div>
+                        
+                        <h3 class="text-xl font-bold text-white">Finanzas &amp; Datos sin Esfuerzo</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed flex-grow">
+                            En lugar de horas copiando datos manualmente, un flujo inteligente procesa documentos y organiza la información en tableros sin errores.
+                        </p>
+                        
+                        <div class="pt-5 border-t border-white/5 text-xs text-cyan-400 font-medium">
+                            ✓ Cero intervención manual.
+                        </div>
+                    </div>
+
+                    <!-- Solution Card 3 -->
+                    <div class="glass-panel p-8 flex flex-col gap-5 hover:-translate-y-2 hover:shadow-[0_10px_40px_-10px_rgba(0,240,255,0.15)] transition-all cursor-pointer relative overflow-hidden" onclick="document.getElementById('proyectos').scrollIntoView({behavior: 'smooth'})">
+                        <div class="w-16 h-16 rounded-2xl bg-cyan-500/10 flex items-center justify-center border border-cyan-500/20">
+                            <i data-lucide="globe" class="w-8 h-8 text-cyan-400"></i>
+                        </div>
+                        
+                        <div class="absolute top-8 right-8 flex items-center gap-1.5 bg-cyan-500/10 text-cyan-400 px-3 py-1 rounded-full text-xs font-semibold border border-cyan-500/20">
+                            <i data-lucide="play-circle" class="w-3.5 h-3.5"></i> VER WEBS
+                        </div>
+                        
+                        <h3 class="text-xl font-bold text-white">Presencia Premium</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed flex-grow">
+                            Plataformas interactivas donde tus clientes perciben una marca premium, diseñadas específicamente para atraer y retener más ventas.
+                        </p>
+                        
+                        <div class="pt-5 border-t border-white/5 text-xs text-cyan-400 font-medium">
+                            ✓ Diseño interactivo de nueva generación.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ── Showcase / Case Studies Section ── -->
+        <div class="stripe-b" id="proyectos">
+            <div class="max-w-6xl mx-auto px-6 section-padding">
+                <div class="text-center mb-16">
+                    <h2 class="font-bold tracking-tight mb-4 text-gradient text-3xl sm:text-5xl">
+                        Casos de <span class="text-gradient-accent">Estudio.</span>
+                    </h2>
+                    <p class="text-gray-400 max-w-xl mx-auto text-base">
+                        Visualización interactiva de arquitecturas, funnels, despliegues web y orquestación implementada.
+                    </p>
+                </div>
+
+                <div class="flex flex-col gap-12">
+
+                    <!-- Case 1: Embudos -->
+                    <div class="glass-panel project-card">
+                        <div class="project-visual bg-neutral-900 border-r border-white/5 flex items-center justify-center relative min-h-[320px]">
+                            <img src="/images/funnel-1.png" alt="Embudos de Alta Conversión" class="w-full h-full object-cover max-h-[360px] cursor-pointer" onclick="openLightbox('/images/funnel-1.png')">
+                        </div>
+                        <div class="project-content p-8 sm:p-12 flex flex-col justify-center gap-6">
+                            <span class="inline-flex self-start px-3 py-1 bg-white/5 rounded text-xs font-semibold text-cyan-400 border border-cyan-500/20">ESTUDIO DE CASO</span>
+                            <h3 class="text-2xl font-bold">Embudos de Alta Conversión y CRM</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                <strong>Solución:</strong> Implementación de CRM (GoHighLevel, Monday) y funnels calificados para maximizar la conversión en cada etapa publicitaria.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2.5 py-1 bg-black/60 rounded border border-white/10 text-xs text-gray-300">Go High Level</span>
+                                <span class="px-2.5 py-1 bg-black/60 rounded border border-white/10 text-xs text-gray-300">Simvoly</span>
+                                <span class="px-2.5 py-1 bg-black/60 rounded border border-white/10 text-xs text-gray-300">Meta Ads</span>
+                                <span class="px-2.5 py-1 bg-black/60 rounded border border-white/10 text-xs text-gray-300">Monday CRM</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Case 2: Orquestación -->
+                    <div class="glass-panel project-card reverse">
+                        <div class="project-visual bg-neutral-900 border-l border-white/5 flex items-center justify-center relative min-h-[320px]">
+                            <img src="/images/make-1.png" alt="Orquestación de Procesos" class="w-full h-full object-cover max-h-[360px] cursor-pointer" onclick="openLightbox('/images/make-1.png')">
+                        </div>
+                        <div class="project-content p-8 sm:p-12 flex flex-col justify-center gap-6">
+                            <span class="inline-flex self-start px-3 py-1 bg-white/5 rounded text-xs font-semibold text-cyan-400 border border-cyan-500/20">ESTUDIO DE CASO</span>
+                            <h3 class="text-2xl font-bold">Orquestación de Procesos 24/7</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                <strong>Solución:</strong> Conexión inter-sistemas para detonar automatizaciones complejas, reduciendo tiempos manuales de horas a segundos.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2.5 py-1 bg-black/60 rounded border border-white/10 text-xs text-gray-300">Make</span>
+                                <span class="px-2.5 py-1 bg-black/60 rounded border border-white/10 text-xs text-gray-300">n8n</span>
+                                <span class="px-2.5 py-1 bg-black/60 rounded border border-white/10 text-xs text-gray-300">Twilio</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Case 3: Desarrollo Web -->
+                    <div class="glass-panel project-card">
+                        <div class="project-visual bg-neutral-900 border-r border-white/5 flex items-center justify-center relative min-h-[320px]">
+                            <img src="/images/webd-1.png" alt="Desarrollo Web" class="w-full h-full object-cover max-h-[360px] cursor-pointer" onclick="openLightbox('/images/webd-1.png')">
+                        </div>
+                        <div class="project-content p-8 sm:p-12 flex flex-col justify-center gap-6">
+                            <span class="inline-flex self-start px-3 py-1 bg-white/5 rounded text-xs font-semibold text-cyan-400 border border-cyan-500/20">ESTUDIO DE CASO</span>
+                            <h3 class="text-2xl font-bold">Desarrollo Web &amp; Vibe Coding</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                <strong>Solución:</strong> Creación de portales de nueva generación desarrollados con IA, garantizando código limpio y alta velocidad de carga.
+                            </p>
+                            <div class="flex flex-col gap-2">
+                                <strong class="text-xs text-white uppercase">Proyectos en vivo:</strong>
+                                <a href="https://dashboard-iota-rust.vercel.app/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-sm text-cyan-400 hover:underline">
+                                    <i data-lucide="external-link" class="w-4 h-4"></i> Dashboard Analítico (Demo)
+                                </a>
+                                <a href="https://sorellevitacouture.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-sm text-cyan-400 hover:underline">
+                                    <i data-lucide="external-link" class="w-4 h-4"></i> Sorelle Vita Couture
+                                </a>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2.5 py-1 bg-black/60 rounded border border-white/10 text-xs text-gray-300">React</span>
+                                <span class="px-2.5 py-1 bg-black/60 rounded border border-white/10 text-xs text-gray-300">Next.js</span>
+                                <span class="px-2.5 py-1 bg-black/60 rounded border border-white/10 text-xs text-gray-300">Vibe Coding</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- ── Contact / GHL Form Container Section ── -->
+        <div class="stripe-a" id="contacto">
+            <div class="max-w-4xl mx-auto px-6 section-padding">
+                <div class="glass-panel contact-panel overflow-hidden">
+                    <div class="grid grid-cols-1 md:grid-cols-2">
+
+                        <!-- Left Info Column -->
+                        <div class="p-8 sm:p-12 border-b md:border-b-0 md:border-r border-white/10 bg-white/[0.02]">
+                            <h2 class="text-3xl font-bold text-gradient mb-4">Construyamos tu Ecosistema</h2>
+                            <p class="text-gray-400 text-sm leading-relaxed mb-8">
+                                Completa tus datos para activar una consultoría directa o agendar la automatización de tus procesos.
+                            </p>
+
+                            <div class="flex flex-col gap-4">
+                                <div class="flex items-center gap-3 text-gray-300">
+                                    <div class="w-9 h-9 rounded-full bg-white/5 flex items-center justify-center">
+                                        <i data-lucide="check-circle" class="w-5 h-5 text-cyan-400"></i>
+                                    </div>
+                                    <span class="text-sm">Flujos Calificados</span>
+                                </div>
+                                <div class="flex items-center gap-3 text-gray-300">
+                                    <div class="w-9 h-9 rounded-full bg-white/5 flex items-center justify-center">
+                                        <i data-lucide="check-circle" class="w-5 h-5 text-cyan-400"></i>
+                                    </div>
+                                    <span class="text-sm">Fricción Cero</span>
+                                </div>
+                                <div class="flex items-center gap-3 text-gray-300">
+                                    <div class="w-9 h-9 rounded-full bg-white/5 flex items-center justify-center">
+                                        <i data-lucide="check-circle" class="w-5 h-5 text-cyan-400"></i>
+                                    </div>
+                                    <span class="text-sm">Workflows Nativos en GHL</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Form Container Column -->
+                        <div class="p-8 sm:p-12 flex flex-col justify-center">
+                            
+                            <!-- ============================================================ -->
+                            <!-- CONTENEDOR PARA FORMULARIO NATIVO DE GOHIGHLEVEL (GHL)       -->
+                            <!-- Reemplaza el iframe / script a continuación por el de tu GHL  -->
+                            <!-- ============================================================ -->
+                            <div id="ghl-form-embed-container" class="w-full">
+                                <p class="text-xs text-cyan-400 font-semibold tracking-wider uppercase mb-3">Formulario Directo de Reservas</p>
+                                
+                                <form onsubmit="event.preventDefault(); alert('¡Formulario completado! En GoHighLevel, este botón detonará tus Workflows nativos.');" class="flex flex-col gap-4">
+                                    <div>
+                                        <label class="block text-xs text-gray-400 mb-1">Nombre Completo</label>
+                                        <input required type="text" placeholder="Ej: Andrés Martínez" class="w-full px-4 py-3 bg-black/40 border border-white/10 rounded-lg text-white text-sm focus:border-cyan-400 outline-none">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs text-gray-400 mb-1">Email Profesional</label>
+                                        <input required type="email" placeholder="nombre@empresa.com" class="w-full px-4 py-3 bg-black/40 border border-white/10 rounded-lg text-white text-sm focus:border-cyan-400 outline-none">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs text-gray-400 mb-1">¿Qué procesos deseas optimizar?</label>
+                                        <textarea required rows="3" placeholder="Describe brevemente los cuellos de botella de tu negocio..." class="w-full px-4 py-3 bg-black/40 border border-white/10 rounded-lg text-white text-sm focus:border-cyan-400 outline-none resize-none"></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary w-full gap-2 mt-2">
+                                        Enviar a la Matriz <i data-lucide="send" class="w-4 h-4"></i>
+                                    </button>
+                                </form>
+                            </div>
+                            <!-- ============================================================ -->
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ── Footer ── -->
+        <footer class="max-w-6xl mx-auto px-6 py-12 text-center text-gray-400 mt-12 border-t border-white/5 flex flex-col items-center gap-4">
+            <p class="text-sm">© <span id="current-year">2026</span> Architect of Growth. Todos los derechos reservados.</p>
+            <div class="flex gap-4 text-xs text-gray-400">
+                <a href="/privacy.html" target="_blank" rel="noopener noreferrer" class="hover:underline">Política de Privacidad</a>
+                <span>|</span>
+                <a href="/terms.html" target="_blank" rel="noopener noreferrer" class="hover:underline">Términos y Condiciones</a>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Lightbox Zoom Modal for Showcase Images -->
+    <div id="lightbox-modal" class="fixed inset-0 z-[99999] bg-black/90 backdrop-blur-md hidden flex-col items-center justify-center">
+        <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white hover:text-cyan-400 bg-white/10 p-3 rounded-full border border-white/20 transition-all">
+            <i data-lucide="x" class="w-6 h-6"></i>
+        </button>
+        <img id="lightbox-img" src="" alt="Vista ampliada" class="max-w-[90%] max-h-[85vh] object-contain rounded-lg shadow-2xl">
+    </div>
+
+    <script>
+        // Inicializar Lucide Icons
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+        });
+
+        // Lightbox Zoom Handler
+        function openLightbox(src) {
+            const modal = document.getElementById('lightbox-modal');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const modal = document.getElementById('lightbox-modal');
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'unset';
+        }
+
+        document.getElementById('lightbox-modal').addEventListener('click', (e) => {
+            if (e.target.id === 'lightbox-modal') closeLightbox();
+        });
+
+        // Dynamic Background Particle Canvas
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        const particles = Array.from({ length: 45 }, () => ({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            size: Math.random() * 1.5 + 0.5,
+            speedX: (Math.random() - 0.5) * 0.3,
+            speedY: (Math.random() - 0.5) * 0.3,
+            opacity: Math.random() * 0.5 + 0.1
+        }));
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.x += p.speedX;
+                p.y += p.speedY;
+
+                if (p.x < 0) p.x = canvas.width;
+                if (p.x > canvas.width) p.x = 0;
+                if (p.y < 0) p.y = canvas.height;
+                if (p.y > canvas.height) p.y = 0;
+
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(0, 240, 255, ${p.opacity})`;
+                ctx.fill();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+    </script>
+</body>
+</html>
